@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/EmployeeListFragment">
+
+    <fragment
+        android:id="@+id/EmployeeListFragment"
+        android:name="com.example.employeeapp.ui.EmployeeListFragment"
+        android:label="@string/list_fragment_label"
+        tools:layout="@layout/fragment_emp_list">
+        <action
+            android:id="@+id/action_ListFragment_to_FormFragment"
+            app:destination="@id/FormFragment" >
+            <argument
+                android:name="userId"
+                android:defaultValue="0"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/FormFragment"
+        android:name="com.example.employeeapp.ui.EmployeeFormFragment"
+        android:label="@string/form_fragment_label"
+        tools:layout="@layout/fragment_form">
+
+        <action
+            android:id="@+id/action_form_to_list_Fragment"
+            app:destination="@id/EmployeeListFragment"
+            app:popUpTo="@id/EmployeeListFragment">
+        </action>
+
+        <action
+            android:id="@+id/action_form_to_dialog_fragment"
+            app:destination="@id/RolesFragment">
+            <argument
+                android:name="userId"
+                android:defaultValue="0"
+                app:argType="integer" />
+        </action>
+
+        <argument
+            android:name="userId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/RolesFragment"
+        android:name="com.example.employeeapp.ui.EmployeeRolesFragment"
+        android:label="@string/roles_fragment_label"
+        tools:layout="@layout/fragment_roles">
+        <argument
+            android:name="userId"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_dialog_to_form_fragment"
+            app:destination="@id/FormFragment" />
+    </dialog>
+</navigation>
