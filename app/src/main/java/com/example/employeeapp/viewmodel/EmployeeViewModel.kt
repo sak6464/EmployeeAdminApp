@@ -11,6 +11,10 @@ import com.example.employeeapp.model.Employee
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * EmployeeViewModel talks to the repository. This class doesn't know where the
+ * data comes from, it can be from network or databases. This class exchanges data with retrofit.
+ */
 class EmployeeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: EmployeeRepository
